@@ -1,9 +1,15 @@
 public class Credit {
 
-    public double calculate(double a, double b, double c) {
-        double d = c / 12 / 100; // ставка мес
-        double e = Math.pow((1 + d), b);
-        double f = a * (d * e) / (e - 1); // ежемесячный платеж
-        return (int) f;
+    public int calculate(double amount, double term, double rateYear) {
+        double rateMonth = rateYear / 12 / 100;
+        double payment = amount * (rateMonth * (Math.pow((1 + rateMonth), term))) / ((Math.pow((1 + rateMonth), term)) - 1);
+        return (int) payment;
     }
 }
+/*
+  amount - сумма кредита
+  term - срок кредита
+  rateYear - ставка год
+  rateMonth - ставка  расчетная мес
+  payment - платеж ежемесячный
+ */
